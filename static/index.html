@@ -53,16 +53,46 @@
 </section>
 
 <section id="page-mov" class="hidden">
-<div class="section-head"><div><h2>Movimentações</h2><p>Histórico de movimentações recentes dos materiais.</p></div><button class="smallbtn" id="newMove">＋ Nova movimentação</button></div>
-<div id="moveNotice" class="notice hidden"></div><div class="panel table-wrap"><table class="table"><thead><tr><th>Data</th><th>Material</th><th>Movimentação</th><th>Origem / destino</th><th>Responsável</th></tr></thead><tbody id="moves"></tbody></table></div>
+<div class="section-head">
+  <div><h2>Movimentações</h2><p>Acompanhamento agrupado por material com atalho rápido para devolução.</p></div>
+  <button class="smallbtn" id="newMove">＋ Nova movimentação</button>
+</div>
+<div class="mov-filter-bar">
+  <button type="button" class="action-btn btn-primary-act" id="filterMovOpen">◉ Em Aberto (Padrão)</button>
+  <button type="button" class="action-btn" id="filterMovAll">☰ Todos os Registros</button>
+</div>
+<div id="moveNotice" class="notice hidden"></div>
+<div class="panel table-wrap">
+  <table class="table">
+    <thead><tr><th>Material</th><th>Último Status / Local</th><th>Histórico Agrupado</th><th>Ação Rápida</th></tr></thead>
+    <tbody id="moves"></tbody>
+  </table>
+</div>
 </section>
 
 <section id="page-retirada" class="hidden">
 <div class="section-head"><div><h2>Retirada de material</h2><p>Confirme a retirada identificando o colaborador pela matrícula.</p></div><span class="pill">Controle de saída</span></div>
 <div id="withdrawNotice" class="notice hidden" role="status"></div>
-1. <div class="panel"><h3>Identifique o material
-</h3><label for="withdrawItem">Material a retirar</label><select id="withdrawItem" style="width:100%;height:48px;border:1px solid #d5dfdb;border-radius:9px;padding:0 12px;background:#fff;color:#263c40"><option value="">Carregando materiais...</option></select><div id="withdrawItemInfo" class="item-meta" style="margin-top:10px"></div></div>
-<div class="panel"><h3>2. Matrícula do colaborador</h3><label for="employeeId">Digite a matrícula</label><div class="searchrow"><div class="searchbox"><span class="searchicon">♙</span><input id="employeeId" inputmode="numeric" placeholder="Ex.: 8820, 8821..." maxlength="12"></div><button id="confirmWithdraw" class="primary">Confirmar retirada</button></div><p class="subtle">Ao confirmar, o status do item muda para “Em Uso” e uma movimentação é registrada neste protótipo.</p></div>
+<div class="panel">
+  <h3>1. Identifique o material</h3>
+  <label for="withdrawItem">Material a retirar</label>
+  <select id="withdrawItem" style="width:100%;height:48px;border:1px solid #d5dfdb;border-radius:9px;padding:0 12px;background:#fff;color:#263c40"><option value="">Carregando materiais...</option></select>
+  <div id="withdrawItemInfo" class="item-meta" style="margin-top:10px"></div>
+</div>
+<div class="panel">
+  <h3>2. Matrícula do colaborador</h3>
+  <label for="employeeId">Digite ou selecione a matrícula</label>
+  <div class="searchrow">
+    <div class="searchbox">
+      <span class="searchicon">♙</span>
+      <input id="employeeId" list="employeesDatalist" placeholder="Ex.: 8820 ou digite o nome..." maxlength="80" autocomplete="off">
+      <datalist id="employeesDatalist"></datalist>
+    </div>
+    <button id="confirmWithdraw" class="primary">Confirmar retirada</button>
+  </div>
+  <div id="employeePreview" class="item-meta" style="margin-top:8px;font-weight:600;color:#155e37"></div>
+  <p class="subtle">Ao confirmar, o status do item muda para “Em Uso” e uma movimentação é registrada no banco SQLite.</p>
+</div>
 <div class="panel"><h3>Resumo da retirada</h3><div id="withdrawSummary" class="subtle">Selecione um material para conferir os dados antes de confirmar.</div></div>
 </section>
 
@@ -92,7 +122,6 @@
     <div class="member-card"><div class="member-avatar">YH</div><div><div class="item-name">Yuri Honorato</div><div class="item-meta">Desenvolvedor · Matrícula: 8822</div></div></div>
     <div class="member-card"><div class="member-avatar">AB</div><div><div class="item-name">Anne Beatriz</div><div class="item-meta">Desenvolvedora · Matrícula: 8823</div></div></div>
     <div class="member-card"><div class="member-avatar">WV</div><div><div class="item-name">Wemilly Vitoria</div><div class="item-meta">Desenvolvedora · Matrícula: 8824</div></div></div>
-    <div class="member-card"><div class="member-avatar">FR</div><div><div class="item-name">Filipe Rodrigues</div><div class="item-meta">Desenvolvedor · Matrícula: 8825</div></div></div>
     <div class="member-card"><div class="member-avatar">BW</div><div><div class="item-name">Bruna Weerds</div><div class="item-meta">Desenvolvedora · Matrícula: 8826</div></div></div>
   </div>
 </div>
