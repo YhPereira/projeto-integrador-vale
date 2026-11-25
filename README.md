@@ -22,12 +22,13 @@ Os dados são armazenados no arquivo local `vale.db`, não em um servidor compar
 4. Execute `iniciar.bat`.
 5. Abra `http://127.0.0.1:5000` no navegador.
 
-Na primeira execução, o programa instala o Flask se necessário e cria o banco `vale.db`. As próximas inicializações não apagam dados existentes; o esquema e os dados de exemplo são aplicados de forma idempotente.
+Na primeira execução, o programa instala as dependências listadas em `requirements.txt` e cria o banco `vale.db`. O inicializador procura esse arquivo na mesma pasta de `iniciar.bat`, mesmo que o script seja aberto a partir de outro diretório. As próximas inicializações não apagam dados existentes; o esquema e os dados de exemplo são aplicados de forma idempotente.
 Para iniciar manualmente:
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 python app.py
 ```
+Execute esses comandos com o terminal aberto na pasta do projeto (a pasta que contém `requirements.txt` e `app.py`). Se o terminal estiver em outra pasta, o pip não encontrará o arquivo. A mensagem `Defaulting to user installation...` é apenas informativa; o erro real é `Could not open requirements file`.
 
 ## Rotas principais da API
 - `GET /api/items`

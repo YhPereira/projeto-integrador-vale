@@ -162,6 +162,17 @@ def api_statuses():
         "total": counts.get(r["status"], 0)
     } for r in rows])
 
+@app.get("/api/employees")
+def api_employees():
+    with connect() as conn:
+        rows = conn.execute(
+            "SELECT matricula, nome, ativo FROM funcionarios WHERE ativo = 1 ORDER BY nome"
+        ).fetchall()
+    return jsonify([
+        {"matricula": row["matricula"], "nome": row["nome"], "ativo": bool(row["ativo"])}
+        for row in rows
+    ])
+
 @app.get("/api/employees/<int:matricula>")
 def api_employee(matricula):
     with connect() as conn:
